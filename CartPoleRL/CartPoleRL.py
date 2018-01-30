@@ -38,9 +38,6 @@ y = 1. - tf.to_float(action)
 cross_entropy = tf.nn.sigmoid_cross_entropy_with_logits(labels=y, logits=logits)
 optimizer = tf.train.AdamOptimizer(learning_rate)
 
-# https://stackoverflow.com/questions/41954198/optimizer-compute-gradients-how-the-gradients-are-calculated-programatically
-# https://www.tensorflow.org/api_docs/python/tf/train/AdamOptimizer
-
 
 ################################
 #### GRADIENTS ################
@@ -68,7 +65,6 @@ saver = tf.train.Saver()
 ######################################
 #### REWARD FUNCTIONs ################
 ####################################
-# CHECK OUT: https://medium.com/@awjuliani/super-simple-reinforcement-learning-tutorial-part-2-ded33892c724
 
 def helper_discount_rewards(rewards, discount_rate):
     '''
@@ -172,7 +168,6 @@ env = gym.make('CartPole-v0')
 
 observations = env.reset()
 with tf.Session() as sess:
-    # https://www.tensorflow.org/api_guides/python/meta_graph
     new_saver = tf.train.import_meta_graph('/models/my-650-step-model.meta')
     new_saver.restore(sess,'/models/my-650-step-model')
 
